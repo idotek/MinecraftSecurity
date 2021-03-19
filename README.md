@@ -1,6 +1,6 @@
 **Anti kikou griefeur Minkraftt**
 
-## J'en ai rien à faire si vous arrivez à bypass tout ça cest juste des conseils, venez pas faire les fouts dans mes mp
+## J'en ai rien à faire si vous arrivez à bypass tout ça cest juste des conseils, venez pas faire les fouts dans mes mp. Fait des pull request si vous avez des choses à rajouter 
 
  - Accès au Dashboard admin du site obligatoirement par un VPN.
 - Accès au compte admins ingame par un proxy particulié (on aura deux proxy redondé pour les joueurs et un proxy réserver aux admin/fonda/compte OP). Les users qui ont des perms importantes seront bloqués sur le proxy joueurs.
