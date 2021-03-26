@@ -31,3 +31,16 @@
 - Installer Port-Sentry en mode Advanced et le configurer de sorte de blacklist les ip détectées 
 
 - Bloquer les packet de netcat / curl
+
+- N'utilisez pas PhpMyadmin, sinon bloquez le par accés VPN ou avec un mot de passe sur la page.
+
+ - Si vous utilisez Pterodactyl, autorisez le uniquement en VPN
+
+- Ne donnez pas les permissions * a tous pour rien, si une personne a les perms * /op (car c'est plus simple a gérer souvent)  il aura pleins de commandes qui ne lui serviront a rien, mais qui pourrait être dévastateur si cette personne se fait hack sont compte. 
+
+- Sur vos serveurs de dev, mettez dés le début votre système d'authentification (c'est souvent sur les serveurs de devs, que les h4xors viennent mettre des pnj give, gm, op etc...) 
+
+Avant l'open, véririfiez chaque PNJ et chaque zone Worldguard, vérifier qu'il n'y en a pas une étrange,  vérifiez aussi les permissions qu'on les players. 
+
+-Faites attention à avoir toujours vos plugins à jours 
+  
