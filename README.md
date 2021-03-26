@@ -28,6 +28,6 @@
 
 - ipset c'est bien aussi si vous voulez ban des longues liste d'ip.
 
-- Installer Port-Sentry en mode Advanced et le configurer du sorte de blacklist les ip détectées 
+- Installer Port-Sentry en mode Advanced et le configurer de sorte de blacklist les ip détectées 
 
 - Bloquer les packet de netcat / curl
