@@ -27,3 +27,7 @@
 - Ah oui aussi, le firewall d'ovh que tout le monde oublie de config est pas mal aussi. Vous pouvez utiliser le firewall d'ovh et utilise iptable uniquement pour gerer le L7 ( antibot par exemple )
 
 - ipset c'est bien aussi si vous voulez ban des longues liste d'ip.
+
+- Installer Port-Sentry en mode Advanced et le configurer du sorte de blacklist les ip détectées 
+
+- Bloquer les packet de netcat / curl
