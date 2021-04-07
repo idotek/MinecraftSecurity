@@ -16,7 +16,7 @@
 
 - Faites des backups incrementales sur un disque dur different de celui de votre dédié et en même temps sur un object storage de scaleaway ( outil conseiller: Borgbackup y'a tout un systeme de rotation de log et ne prend pas beaucoup de places sur le disque. Logique c'est incrémentale) Perso j'avais une backup par heure, 2 backups par jour, une backup par semaine et une backup par mois.
 
-- Niveau antibot vous pouvez faire du racisme sur iptable, venez mp si vous voulez le script mais c'est out to update avec les methodes qui ne vont pas tarder à sortir. GL à vous ( tcpshield est bypassable ).
+- Niveau antibot vous pouvez faire du racisme sur iptable,  GL à vous ( tcpshield est bypassable ).
 
 - Niveau DDoS de site CF free c'est une passoire, même si vous faites du racisme. Essayer de vous orienter sur du AWS mais faut avoir les compétences pour le maintenir sans payer trop chère
 
