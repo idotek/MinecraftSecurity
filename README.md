@@ -2,7 +2,7 @@
 
 - Accès au Dashboard admin du site obligatoirement par un VPN.
 
-- Accès au compte admins ingame par un proxy particulié (on aura deux proxy redondé pour les joueurs et un proxy réservé aux admin/fonda/compte OP). Les users qui ont des perms importantes seront bloqués sur le proxy joueurs.
+- Accès au compte admins ingame par un proxy particulié (on aura deux proxy redondé pour les joueurs et un proxy réservé aux admin/fonda/compte OP). Les users qui ont des perms importantes seront bloqués sur le proxy joueurs. Le proxy pour les admins doit également implémenter l'authentification à 2 facteurs (afin d'éviter en désastre en cas de hack d'un compte admin).
 
 - un /pin sur le faction avec un mot de passe qui change tous les jours qui seraient envoyé aux admins dans un groupe télégram) que seulement les gens OP/ayant des perms admins connaitront, ou une 2FA avec une libs Google Auth MISE A JOUR.
 
