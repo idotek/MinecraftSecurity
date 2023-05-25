@@ -46,11 +46,11 @@
 
 - Passez vos plugins dans un remover-backdoor. Exemple : (https://github.com/AbhigyaKrishna/JavaAssistBackdoorRemover)
 
-- Ne pas utilisé l'extension javascript de Papi
+- Ne pas utilisé l'extension javascript de Papi (Reverse shell possible)
 
-- Ne pas utilisé holographicdisplay en desous de la version 2.0
+- Ne pas utilisé holographicdisplay en desous de la version 2.0 (Possibilité d'afficher des fichiers sytemes)
 
-- Bloquer les commandes : /fill, //sphere, /bc, /litebans sqlexec select * from {history}, /execute
+- Bloquer les commandes : /fill, //sphere, /bc, sqlexec select * from {history}, /execute
 
 - Ne pas utilisé de plugins qui sont crack ou autres car vous aurez de sûr une backdoor dedans
 
