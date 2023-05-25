@@ -50,7 +50,7 @@
 
 - Ne pas utilisé holographicdisplay en desous de la version 2.0 (Possibilité d'afficher des fichiers sytemes)
 
-- Bloquer les commandes : /fill, //sphere, /bc, sqlexec select * from {history}, /execute
+- Bloquer les commandes : /fill, //sphere, /bc, /execute
 
 - Ne pas utilisé de plugins qui sont crack ou autres car vous aurez de sûr une backdoor dedans
 
