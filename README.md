@@ -43,4 +43,22 @@
 - Avant l'open, véririfiez chaque PNJ et chaque zone Worldguard, vérifier qu'il n'y en a pas une étrange,  vérifiez aussi les permissions qu'on les players. 
 
 - Faites attention à avoir toujours vos plugins à jours 
-  
+
+- Passez vos plugins dans un remover-backdoor. Exemple : (https://github.com/AbhigyaKrishna/JavaAssistBackdoorRemover)
+
+- Ne pas utilisé l'extension javascript de Papi
+
+- Ne pas utilisé holographicdisplay en desous de la version 2.0
+
+- Bloquer les commandes : /fill, //sphere, /bc, /litebans sqlexec select * from {history}, /execute
+
+- Ne pas utilisé de plugins qui sont crack ou autres car vous aurez de sûr une backdoor dedans
+
+- Utilisez Xcord ou LPX mais pas les deux en même temps qui causeras des problèmes
+
+- Mettez vos base de données sur une machine externe pour éviter de se faire scrap la db de votre serveur si ils arrivent à
+  à s'emparer du dédier (Externaliser au maximum vos services)
+
+- N'oubliez pas que personne est de confiance donc mettez pas des accèss machines a tous le monde pour x raison
+
+- Faites vérifier vos plugins personnalisés par des personnes qui savent tester les plugins, trouver les failles et autres.
