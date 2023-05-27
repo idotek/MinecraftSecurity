@@ -1,4 +1,4 @@
-> **Avec l'aimable contribution de SwartZCoding, GaetanOff, RayxiO, adrgaspard, CerealesMC, Alexmdz77 et Comore**
+**Avec l'aimable contribution de SwartZCoding, GaetanOff, RayxiO, adrgaspard, CerealesMC, Alexmdz77 et Comore**
 
 # Liste des conseils
 
