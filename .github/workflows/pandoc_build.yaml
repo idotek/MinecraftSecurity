@@ -1,0 +1,28 @@
+name: Build page
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install Pandoc
+      run: |
+        wget https://github.com/jgm/pandoc/releases/download/3.1.2/pandoc-3.1.2-1-amd64.deb
+        sudo dpkg -i pandoc-3.1.2-1-amd64.deb
+        mkdir public
+
+    - name: Convertir from Markdown to HTML
+      run: pandoc --embed-resources -s README.md -o public/index.html --metadata title="Conseils de sécurité minecraftiens" --metadata author="idotek"
+
+    - name: Deploy on Github Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public

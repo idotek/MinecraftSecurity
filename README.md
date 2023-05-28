@@ -1,64 +1,69 @@
-## Vous trouverez ci-dessous une petite liste de choses à faire pour limiter au max les relou qui grief vos serveurs. La liste est tout sauf parfaite et je ne dis pas qu'elle n'est pas bypassable. C'était juste un petit cadeau de départ lol. Faites des pull requests si vous voulez modifier ou ajouter un truc.
+**Avec l'aimable contribution de SwartZCoding, GaetanOff, RayxiO, adrgaspard, CerealesMC, Alexmdz77 et Comore**
 
-- Accès au Dashboard admin du site obligatoirement par un VPN.
+# Liste des conseils
 
-- Accès aux comptes admins ingame par un proxy particulier (on aura deux proxy redondés pour les joueurs et un proxy réservé aux admin/fonda/compte OP). Les users qui ont des perms importantes seront bloqués sur le proxy joueurs. Le proxy pour les admins doit également implémenter l'authentification à 2 facteurs (afin d'éviter en désastre en cas de hack d'un compte admin).
+## Infrastructure
 
-- un /pin sur le faction avec un mot de passe qui change tous les jours (qui seraient envoyés aux admins dans un groupe télégram) que seulement les gens OP/ayant des perms admins connaitront, ou une 2FA avec une lib Google Auth MISE A JOUR.
+- Avoir un proxy (e.g. [BungeeCord](https://github.com/SpigotMC/BungeeCord) ou [Velocity](https://github.com/PaperMC/Velocity)) dédié uniquement aux administrateurs, en plus du principal dédié uniquement aux joueurs (donc bloquer également les administrateurs sur le proxy joueur !!) ;
 
-- Un plugin d'antiOP / perm étoile: toute personne qui devient OP, qui change son gamemode, qui se give quelque chose sur le serveur ou qui s'attribue des permissions admin (*) (se sont des exemples hein, mettez toutes les commandes sensibles ) qui n'est pas dans les fichiers de config du plugin sont INSTANT ban.
+- Faire des backups incrémentales sur un serveur annexe et également sur un object storage (e.g. S3 (voire même S3 Glacier), [GCS](https://cloud.google.com/storage), [Scaleway Object Storage](https://www.scaleway.com/en/object-storage/)), [Borgbackup](https://www.borgbackup.org/) fait très bien le boulot (settings que j'utilisais : 1 backup/heure, 2 backups/jour, 1 backup/semaine et 1 backup/mois) ;
 
-- Un plugin d'antiGM. Tout est dit dans le titre.
+- Pour éviter les attaques de bots, n'hésitez pas à ne whitelister que les adresses de pays francophones sur [IPTables](https://linux.die.net/man/8/iptables) ;
 
-- Les commandes de luckperm sont exécutables uniquement en console.
+- Si vous avez les compétences pour, s'orienter vers les services d'AWS (e.g. [CloudFront](https://aws.amazon.com/cloudfront/)) plutôt que d'utiliser l'[offre gratuite de Cloudflare](https://www.cloudflare.com/plans/free/), qui est pas fofolle ;
 
-- Désactivation du OP dans le server.properties
+- Bloquer le scan de port avec [IPTables](https://linux.die.net/man/8/iptables) ;
 
-- Faites des backups incrémentales sur un disque dur différent de celui de votre dédié et en même temps sur un object storage de scaleaway ( outil conseiller: Borgbackup y'a tout un système de rotation de log et ne prend pas beaucoup de places sur le disque. Logique c'est incrémental) Perso j'avais une backup par heure, 2 backups par jour, une backup par semaine et une backup par mois.
+- Ouvrir les ports de vos serveurs MC UNIQUEMENT au proxy ;
 
-- Niveau antibot vous pouvez faire du racisme sur iptable,  GL à vous ( tcpshield est bypassable ).
+- Utiliser le firewall d'OVH si possible (e.g. firewall d'OVH + [IPTables](https://linux.die.net/man/8/iptables) seulement pour gérer tout ce qui est bots, ...) ;
 
-- Niveau DDoS de site CF free c'est une passoire, même si vous faites du racisme. Essayez de vous orienter sur du AWS mais faut avoir les compétences pour le maintenir sans payer trop cher.
+- Utiliser [IPSet](https://ipset.netfilter.org/) pour bannir de longues listes d'adresses IP ;
 
-- Nos chers hackers de l'internet aiment bien le scan de port aussi avec nmap, bloquez-le avec iptables c'est pas compliqué.
+- Installer et configurer [PortSentry](https://manpages.ubuntu.com/manpages/bionic/man5/portsentry.conf.5.html) en mode avancé de façon à ce qu'il blacklist les adresses IPs détectées ;
 
-- Niveau firewall tant qu'ont y est, il faut ABSOLUMENT restreindre les ports de vos serveurs de jeux UNIQUEMENT à l'ip du bungeecord. Sinon nos chers h4xor minecraft pourront se connecter directement sur le serveur sans passer par votre PROXY.
+- Bloquer les paquets de [netcat](https://linux.die.net/man/1/nc) et [curl](https://linux.die.net/man/1/curl) ;
 
-- Ne pas oublier de config le firewall d'ovh. Vous pouvez utiliser le firewall d'ovh et iptable uniquement pour gérer le L7 ( antibot par exemple )
+- Éviter d'utiliser des solutions à la [phpMyAdmin](https://www.phpmyadmin.net/), ou limiter leur accès via un VPN ou une authentification sur la page ;
 
-- ipset c'est bien aussi si vous voulez ban des longues listes d'IPs.
+- Ouvrir en général l'accès aux dashboards admins (e.g. panel administrateur de votre site, [Pterodactyl](https://pterodactyl.io/), ...) en tout genre seulement via un VPN.
 
-- Installer Port-Sentry en mode Advanced et le configurer de sorte de blacklist les ip détectées 
+- Externaliser vos services au maximum sur des machines annexes, ne pas tout mettre sur la même machine (e.g. bases de données) ;
 
-- Bloquer les packets de netcat / curl
+- Limiter le plus possible les accès à vos machines.
 
-- N'utilisez pas PhpMyadmin, sinon bloquez-le par un accès VPN ou avec un mot de passe sur la page.
+## En jeu
 
-- Si vous utilisez Pterodactyl, autorisez le uniquement sous VPN
+- Avoir un plugin de double authentification sur votre serveur de jeu !!.
 
-- Ne donnez pas les permissions * à tous pour rien, si une personne a les perms * /op (car c'est plus simple à gérer souvent) il aura plein de commandes qui ne lui serviront à rien, mais qui pourraient être dévastatrices si cette personne se fait hack son compte. 
+- Bloquer la permission `*` sur le serveur (e.g. [LuckPerms le permet](https://luckperms.net/wiki/Configuration#enable-ops)) ;
 
-- Sur vos serveurs de dev, mettez dès le début votre système d'authentification (c'est souvent sur les serveurs de devs, que les h4xors viennent mettre des pnj give, gm, op etc...) 
+- Avoir un plugin qui bannit automatiquement tout compte non-autorisé d'être en gamemode créatif, d'être OP, ... ;
 
-- Avant l'open, vérifiez chaque PNJs et chaque zones Worldguard, vérifier qu'il n'y en a pas une étrange,  vérifiez aussi les permissions qu'ont les players. 
+- Autoriser l'exécution des commandes de votre plugin de permission UNIQUEMENT par votre console ;
 
-- Faites attention à avoir toujours vos plugins à jour
+- Désactiver l'OP dans votre `server.properties` ;
 
-- Passez vos plugins dans un remover-backdoor. Exemple : (https://github.com/AbhigyaKrishna/JavaAssistBackdoorRemover)
+- Bien limiter les permissions en jeu que vous donnez à votre équipe (voire même à votre compte), ne pas donner la permission `*` à tout va si vous ne la bloquez pas ;
 
-- Ne pas utiliser l'extension javascript de Papi (Reverse shell possible)
+- Bien mettre un système d'authentification, même sur vos serveurs de développement ; 
 
-- Ne pas utiliser HolographicDisplay en dessous de la version 2.0 (Possibilité d'afficher des fichiers systèmes)
+- Avant votre ouverture, vérifier chaque PNJ intéractif sur votre serveur, chaque zone [WorldGuard](https://worldguard.enginehub.org/en/latest/) et vérifier également les permissions qu'ont tous les joueurs de votre serveur ;
 
-- Bloquer les commandes : /fill, //sphere, /bc, /execute
+- Bien mettre à jour vos plugins régulièrement ;
 
-- Ne pas utiliser de plugins qui sont crack ou autres car vous aurez de sûr une backdoor dedans
+- Se renseigner sur les malwares qui traînent (e.g. [vmd-gnu](https://www.reddit.com/r/admincraft/comments/xrfim0/papermc_malware_announcement/)) et vérifier que vous n'êtes pas concernés ;
 
-- Utilisez Xcord ou LPX mais pas les deux en même temps, cela vous causerait des problèmes
+- Ne pas activer l'extension JS de [PlaceholderAPI](https://github.com/PlaceholderAPI/PlaceholderAPI) ;
 
-- Mettez vos bases de données sur une machine externe pour éviter de vous faire scrap la db de votre serveur s'ils arrivent à
-  à s'emparer du dédié (Externaliser au maximum vos services)
+- Bloquer les commandes suivantes : 
+  - `/fill` ;
+  - `//sphere` ; 
+  - `/bc` ; 
+  - `/execute` ;
 
-- N'oubliez pas que personne est de confiance donc mettez pas des accès machines à tout le monde pour x raison
+- Être un administrateur de serveur responsable et ne pas utiliser de plugins nulled (probabilité très forte d'avoir une connerie dedans) ;
 
-- Faites vérifier vos plugins personnalisés par des personnes qui savent tester les plugins, trouver les failles et autres.
+- Utiliser [Xcord](https://builtbybit.com/resources/xcord-high-performance-anti-bot.16843/) OU [LPX](https://builtbybit.com/resources/lpx-antipacketexploit-antinettycrasher.15709), mais pas les deux en même temps à cause d'incompatibilités entre les deux ;
+
+- Tester vos plugins "custom" DE FOND EN COMBLE pour éviter les surprises lors de votre ouverture.
