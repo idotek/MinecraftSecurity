@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="idotek" />
+  <title>Conseils de sécurité minecraftiens</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Conseils de sécurité minecraftiens</h1>
+<p class="author">idotek</p>
+</header>
+<p><strong>Avec l’aimable contribution de SwartZCoding, GaetanOff,
+RayxiO, adrgaspard, CerealesMC, Alexmdz77 et Comore</strong></p>
+<h1 id="liste-des-conseils">Liste des conseils</h1>
+<h2 id="infrastructure">Infrastructure</h2>
+<ul>
+<li><p>Avoir un proxy (e.g. <a href="https://github.com/SpigotMC/BungeeCord">BungeeCord</a> ou <a href="https://github.com/PaperMC/Velocity">Velocity</a>) dédié
+uniquement aux administrateurs, en plus du principal dédié uniquement
+aux joueurs (donc bloquer également les administrateurs sur le proxy
+joueur !!) ;</p></li>
+<li><p>Faire des backups incrémentales sur un serveur annexe et
+également sur un object storage (e.g. S3 (voire même S3 Glacier), <a href="https://cloud.google.com/storage">GCS</a>, <a href="https://www.scaleway.com/en/object-storage/">Scaleway Object
+Storage</a>), <a href="https://www.borgbackup.org/">Borgbackup</a> fait
+très bien le boulot (settings que j’utilisais : 1 backup/heure, 2
+backups/jour, 1 backup/semaine et 1 backup/mois) ;</p></li>
+<li><p>Pour éviter les attaques de bots, n’hésitez pas à ne whitelister
+que les adresses de pays francophones sur <a href="https://linux.die.net/man/8/iptables">IPTables</a> ;</p></li>
+<li><p>Si vous avez les compétences pour, s’orienter vers les services
+d’AWS (e.g. <a href="https://aws.amazon.com/cloudfront/">CloudFront</a>)
+plutôt que d’utiliser l’<a href="https://www.cloudflare.com/plans/free/">offre gratuite de
+Cloudflare</a>, qui est pas fofolle ;</p></li>
+<li><p>Bloquer le scan de port avec <a href="https://linux.die.net/man/8/iptables">IPTables</a> ;</p></li>
+<li><p>Ouvrir les ports de vos serveurs MC UNIQUEMENT au proxy
+;</p></li>
+<li><p>Utiliser le firewall d’OVH si possible (e.g. firewall d’OVH + <a href="https://linux.die.net/man/8/iptables">IPTables</a> seulement pour
+gérer tout ce qui est bots, …) ;</p></li>
+<li><p>Utiliser <a href="https://ipset.netfilter.org/">IPSet</a> pour
+bannir de longues listes d’adresses IP ;</p></li>
+<li><p>Installer et configurer <a href="https://manpages.ubuntu.com/manpages/bionic/man5/portsentry.conf.5.html">PortSentry</a>
+en mode avancé de façon à ce qu’il blacklist les adresses IPs détectées
+;</p></li>
+<li><p>Bloquer les paquets de <a href="https://linux.die.net/man/1/nc">netcat</a> et <a href="https://linux.die.net/man/1/curl">curl</a> ;</p></li>
+<li><p>Éviter d’utiliser des solutions à la <a href="https://www.phpmyadmin.net/">phpMyAdmin</a>, ou limiter leur accès
+via un VPN ou une authentification sur la page ;</p></li>
+<li><p>Ouvrir en général l’accès aux dashboards admins (e.g. panel
+administrateur de votre site, <a href="https://pterodactyl.io/">Pterodactyl</a>, …) en tout genre
+seulement via un VPN.</p></li>
+<li><p>Externaliser vos services au maximum sur des machines annexes, ne
+pas tout mettre sur la même machine (e.g. bases de données) ;</p></li>
+<li><p>Limiter le plus possible les accès à vos machines.</p></li>
+</ul>
+<h2 id="en-jeu">En jeu</h2>
+<ul>
+<li><p>Avoir un plugin de double authentification sur votre serveur de
+jeu !!.</p></li>
+<li><p>Bloquer la permission <code>*</code> sur le serveur (e.g. <a href="https://luckperms.net/wiki/Configuration#enable-ops">LuckPerms le
+permet</a>) ;</p></li>
+<li><p>Avoir un plugin qui bannit automatiquement tout compte
+non-autorisé d’être en gamemode créatif, d’être OP, … ;</p></li>
+<li><p>Autoriser l’exécution des commandes de votre plugin de permission
+UNIQUEMENT par votre console ;</p></li>
+<li><p>Désactiver l’OP dans votre <code>server.properties</code>
+;</p></li>
+<li><p>Bien limiter les permissions en jeu que vous donnez à votre
+équipe (voire même à votre compte), ne pas donner la permission
+<code>*</code> à tout va si vous ne la bloquez pas ;</p></li>
+<li><p>Bien mettre un système d’authentification, même sur vos serveurs
+de développement ;</p></li>
+<li><p>Avant votre ouverture, vérifier chaque PNJ intéractif sur votre
+serveur, chaque zone <a href="https://worldguard.enginehub.org/en/latest/">WorldGuard</a> et
+vérifier également les permissions qu’ont tous les joueurs de votre
+serveur ;</p></li>
+<li><p>Bien mettre à jour vos plugins régulièrement ;</p></li>
+<li><p>Se renseigner sur les malwares qui traînent (e.g. <a href="https://www.reddit.com/r/admincraft/comments/xrfim0/papermc_malware_announcement/">vmd-gnu</a>)
+et vérifier que vous n’êtes pas concernés ;</p></li>
+<li><p>Ne pas activer l’extension JS de <a href="https://github.com/PlaceholderAPI/PlaceholderAPI">PlaceholderAPI</a>
+;</p></li>
+<li><p>Bloquer les commandes suivantes :</p>
+<ul>
+<li><code>/fill</code> ;</li>
+<li><code>//sphere</code> ;</li>
+<li><code>/bc</code> ;</li>
+<li><code>/execute</code> ;</li>
+</ul></li>
+<li><p>Être un administrateur de serveur responsable et ne pas utiliser
+de plugins nulled (probabilité très forte d’avoir une connerie dedans)
+;</p></li>
+<li><p>Utiliser <a href="https://builtbybit.com/resources/xcord-high-performance-anti-bot.16843/">Xcord</a>
+OU <a href="https://builtbybit.com/resources/lpx-antipacketexploit-antinettycrasher.15709">LPX</a>,
+mais pas les deux en même temps à cause d’incompatibilités entre les
+deux ;</p></li>
+<li><p>Tester vos plugins “custom” DE FOND EN COMBLE pour éviter les
+surprises lors de votre ouverture.</p></li>
+</ul>
+</body>
+</html>
