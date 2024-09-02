@@ -65,3 +65,5 @@
 - Être un administrateur de serveur responsable et ne pas utiliser de plugins nulled (probabilité très forte d'avoir une connerie dedans) ;
 
 - Tester vos plugins "custom" DE FOND EN COMBLE pour éviter les surprises lors de votre ouverture.
+
+- Impérativement mettre à jour vos plugins. Je prend exemple sur l'anti-cheat Vulcan qui a eu une CVE importante 
