@@ -64,6 +64,8 @@
 
 - Être un administrateur de serveur responsable et ne pas utiliser de plugins nulled (probabilité très forte d'avoir une connerie dedans) ;
 
+- Utiliser [Xcord](https://builtbybit.com/resources/xcord-high-performance-anti-bot.16843/) OU [LPX](https://builtbybit.com/resources/lpx-antipacketexploit-antinettycrasher.15709), mais pas les deux en même temps à cause d'incompatibilités entre les deux ;
+
 - Tester vos plugins "custom" DE FOND EN COMBLE pour éviter les surprises lors de votre ouverture.
 
 - Impérativement mettre à jour vos plugins. Je prend exemple sur l'anti-cheat Vulcan qui a eu une CVE importante 
