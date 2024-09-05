@@ -1,4 +1,4 @@
-**Avec l'aimable contribution de SwartZCoding, GaetanOff, RayxiO, adrgaspard, CerealesMC, Alexmdz77 et Comore**
+**Avec l'aimable contribution de SwartZCoding, GaetanOff, RayxiO, adrgaspard, CerealesMC, Alexmdz77 et Comore, MrCyci6**
 
 # Liste des conseils
 
@@ -56,7 +56,7 @@
 
 - Ne pas activer l'extension JS de [PlaceholderAPI](https://github.com/PlaceholderAPI/PlaceholderAPI) ;
 
-- Bloquer les commandes suivantes : 
+- Bloquer les commandes suivantes : (blacklist-commands.yml)
   - `/fill` ;
   - `//sphere` ; 
   - `/bc` ; 
